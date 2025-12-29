@@ -1,0 +1,134 @@
+/* --- MEMBERS PAGE STYLES --- */
+
+/* 1. Hero Section */
+.members-hero {
+    text-align: center;
+    padding: 80px 20px 40px;
+    background-color: #F9FAFB;
+    /* Uses the same grid pattern as your other pages for consistency */
+    background-image: radial-gradient(circle at 2px 2px, #E5E7EB 1px, transparent 0);
+    background-size: 40px 40px;
+}
+
+.big-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    line-height: 1.1;
+    color: #111827;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #6B7280;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 2. Grid Layout for 27 Students */
+.members-list-section {
+    padding: 60px 0 100px;
+    background-color: #fff;
+}
+
+/* 3. Individual Member Card */
+.member-card {
+    display: flex;       /* This puts image left, text right */
+    align-items: center; /* Vertically center them */
+    background: white;
+    border: 1px solid #f3f4f6;
+    border-radius: 16px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    border-color: #2563EB; /* Highlights blue on hover */
+}
+
+/* Image Styling */
+.member-img {
+    flex-shrink: 0; /* Prevents image from squishing */
+    margin-right: 20px;
+}
+
+.member-img img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Makes it a perfect circle */
+    object-fit: cover;  /* Ensures photo doesn't stretch */
+    border: 3px solid #f9fafb;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Text Styling */
+.member-info h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.location {
+    font-size: 0.9rem;
+    color: #6B7280;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.location i {
+    color: #2563EB; /* Blue map pin */
+    font-size: 0.8rem;
+}
+
+/* Updated Grid for Mobile */
+.members-grid {
+    display: grid;
+    /* Changed 320px to 280px so it fits on small phones */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px;
+}
+
+@media (max-width: 480px) {
+    .member-card {
+        flex-direction: column; /* Stack image on top of text */
+        text-align: center;
+        padding: 20px;
+    }
+
+    .member-img {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .location {
+        justify-content: center; /* Center the location icon/text */
+    }
+}
+
+/* --- SCROLL ANIMATION STYLES --- */
+
+/* Initial State: Hidden and pushed down */
+.member-card {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95); /* Slight zoom out + push down */
+    transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    /* The cubic-bezier makes it start fast and settle gently (professional feel) */
+    will-change: opacity, transform; /* Optimization for smoother rendering */
+}
+
+/* Visible State: Fully opaque and back to normal position */
+.member-card.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Hover effect remains separate so it doesn't conflict */
+.member-card.show:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15);
+}

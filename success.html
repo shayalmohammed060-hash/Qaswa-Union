@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful | QASWA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #F9FAFB;
+            background-image: radial-gradient(circle at 2px 2px, #E5E7EB 1px, transparent 0);
+            background-size: 40px 40px;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+        .success-card {
+            background: white;
+            padding: 60px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f3f4f6;
+        }
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            background: #ecfdf5;
+            color: #10b981;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+        }
+        h1 { font-weight: 800; color: #111827; margin-bottom: 15px; font-size: 1.8rem; }
+        p { color: #6B7280; line-height: 1.6; margin-bottom: 35px; font-size: 0.95rem; }
+        .btn-home {
+            background: #111827;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .btn-home:hover {
+            background: #2563EB;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="success-card">
+        <div class="icon-circle"><i class="fas fa-check"></i></div>
+        <h1>Welcome to QASWA!</h1>
+        <p>Your registration is complete. You are now officially a member.</p>
+        <a href="index.html" class="btn-home">Go to Home</a>
+    </div>
+
+    <script>
+        // Ensure home page knows to hide the join button
+        localStorage.setItem('userStatus', 'joined');
+    </script>
+</body>
+</html>

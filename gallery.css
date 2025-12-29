@@ -1,0 +1,199 @@
+/* --- GALLERY SPECIFIC STYLES --- */
+
+body.light-theme {
+    background-color: #fff;
+    background-image: linear-gradient(#f0f2f5 1px, transparent 1px),
+                      linear-gradient(90deg, #f0f2f5 1px, transparent 1px);
+    background-size: 40px 40px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.gallery-hero {
+    padding: 100px 0 40px;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #2563EB, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* FILTER BUTTONS */
+.filter-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    border-radius: 50px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: #2563EB;
+    color: white;
+    border-color: #2563EB;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+
+/* MASONRY GRID */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 300px;
+    gap: 20px;
+    padding-bottom: 100px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+.overlay span {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Transitions */
+.animate-on-scroll {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Fix for dynamic images escaping the borders */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 250px; /* Forces a consistent row height */
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px; /* Keeps it from getting too wide */
+    margin: 0 auto;
+}
+
+.gallery-item {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* This acts like a container border */
+    border-radius: 20px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This makes sure the photo fills the box without stretching */
+    display: block;
+}
+
+
+/* Fix for dynamic images escaping the borders */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 280px; /* Forces a consistent height for every row */
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.gallery-item {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Keeps everything inside the rounded corners */
+    border-radius: 20px;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Magic line: fills the box perfectly without stretching */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1); /* Nice zoom effect on hover */
+}
+
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    /* Make filter buttons scroll horizontally if they don't fit */
+    .filter-controls {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch; /* Smooth scroll on iPhone */
+        padding-left: 10px;
+    }
+
+    .filter-btn {
+        flex-shrink: 0; /* Prevent buttons from squishing */
+        font-size: 0.9rem;
+        padding: 8px 20px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* 1 image per row */
+        grid-auto-rows: 250px;
+    }
+}

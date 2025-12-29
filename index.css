@@ -1,0 +1,404 @@
+:root {
+    --primary-blue: #2563EB;
+    --dark-bg: #050505;
+    --gray-text: #6B7280;
+    --light-border: #f3f4f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #fff;
+    background-image: linear-gradient(#f0f2f5 1px, transparent 1px),
+                      linear-gradient(90deg, #f0f2f5 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: #111827;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- STICKY NAVBAR --- */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 15px 0;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* --- HAMBURGER MENU STYLES --- */
+
+/* Hide checkbox and hamburger icon by default (Desktop) */
+#check {
+    display: none;
+}
+
+.checkbtn {
+    font-size: 24px;
+    color: var(--primary-blue);
+    cursor: pointer;
+    display: none; /* Hidden on desktop */
+}
+
+.mobile-only {
+    display: none;
+}
+
+/* --- MOBILE RESPONSIVENESS FIXES --- */
+@media (max-width: 950px) {
+    .checkbtn {
+        display: block; /* Force show hamburger on tablets/phones */
+        margin-right: 20px; /* Give it some breathing room */
+    }
+
+    .nav-links {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        top: 80px; /* Push it down below the navbar */
+        left: -100%;
+        text-align: center;
+        transition: all 0.4s ease;
+        flex-direction: column;
+        padding-top: 40px;
+    }
+
+    .nav-links.active { /* We will toggle this class with JS later */
+        left: 0; 
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+}
+    
+    /* When checkbox is checked, slide menu in */
+    #check:checked ~ .nav-links {
+        left: 0;
+    }
+    
+    /* Change icon to an 'X' when open (Optional) */
+    #check:checked ~ .checkbtn i::before {
+        content: "\f00d"; /* FontAwesome 'X' icon */
+    }
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 12px; /* Space between logo and text */
+}
+
+.union-logo {
+    width: 50px;      /* Adjust size as needed */
+    height: 50px;     /* Keep width/height same for circle */
+    object-fit: contain;
+    border-radius: 8px; /* Optional: gives it a slight roundness if it's square */
+    transition: transform 0.3s ease;
+}
+
+/* Pro effect: logo grows slightly when you hover over the logo area */
+.logo-link:hover .union-logo {
+    transform: scale(1.1);
+}
+
+.logo-text {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -1px;
+    background: linear-gradient(90deg, #2563EB, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #374151;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.btn-signup {
+    background: var(--primary-blue);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    border: 1px solid var(--light-border);
+    margin-bottom: 30px;
+}
+
+.hero-badge .dot {
+    width: 6px;
+    height: 6px;
+    background: #ef4444;
+    border-radius: 50%;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #006ea1, #0bc6f5); /* Matching "Festie" orange-red */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-text);
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #006ea1, #0bc6f5);
+    color: white;
+    padding: 16px 35px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.btn-secondary {
+    background: white;
+    padding: 16px 35px;
+    border-radius: 12px;
+    border: 1px solid var(--light-border);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.hero-tags {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    font-size: 0.9rem;
+    color: var(--gray-text);
+}
+
+.hero-tags i { color: #10b981; }
+
+/* --- FEATURES --- */
+.section-padding { padding: 100px 0; }
+
+.section-header { text-align: center; margin-bottom: 60px; }
+
+.badge {
+    color: #ef4444;
+    background: #fef2f2;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid var(--light-border);
+    transition: 0.3s;
+}
+
+.card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.blue-bg { background: #eff6ff; color: #2563EB; }
+.purple-bg { background: #f5f3ff; color: #7c3aed; }
+.cyan-bg { background: #ecfeff; color: #0891b2; }
+
+
+
+
+
+/* --- SCROLL ANIMATION STYLES (HOME) --- */
+
+/* 1. Base Class for Animated Elements */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px); /* Push down slightly */
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+/* 2. Visible State (Triggered by JS) */
+.animate-on-scroll.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 3. Stagger Delays (Optional but Pro) 
+   If you have a grid of 3 items, this makes them pop up 1-by-1 */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+
+
+
+/* --- FOOTER --- */
+.main-footer {
+    background: var(--dark-bg);
+    color: white;
+    padding: 80px 0 40px;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 50px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #222;
+}
+
+.footer-col h4 { margin-bottom: 20px; font-size: 1rem; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 12px; }
+.footer-col a { color: #9ca3af; text-decoration: none; font-size: 0.9rem; }
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.footer-help a { color: white; text-decoration: none; font-weight: 600; }
+
+
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(90deg, #2563EB, #06b6d4);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    transition: 0.3s;
+    z-index: 9999;
+}
+.scroll-top:hover { transform: translateY(-5px); }
+
+
+/* --- MOBILE FIXES FOR HOME PAGE --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px; /* Add side padding so text doesn't touch edges */
+    }
+
+    .hero-title {
+        font-size: 2.8rem; /* Make big text smaller for phone screens */
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .hero-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%; /* Make buttons full width */
+        text-align: center;
+    }
+
+    .grid-3 {
+        grid-template-columns: 1fr; /* Force 1 column for feature cards */
+        gap: 20px;
+    }
+    
+    .hero-tags {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

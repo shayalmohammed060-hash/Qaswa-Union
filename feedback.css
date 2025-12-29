@@ -1,0 +1,213 @@
+/* --- QASWA PRO GRID BACKGROUND --- */
+body.pro-grid-bg {
+    background-color: #ffffff;
+    background-image: linear-gradient(#f0f2f5 1px, transparent 1px),
+                      linear-gradient(90deg, #f0f2f5 1px, transparent 1px);
+    background-size: 40px 40px;
+    font-family: 'Poppins', sans-serif;
+    color: #111827;
+    margin: 0;
+}
+
+/* Hero Typography */
+.feedback-hero {
+    padding: 80px 0 40px;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #2563EB, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+    color: #6B7280;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    padding: 0 20px;
+}
+
+/* --- RESPONSIVE CARD --- */
+.form-wrapper {
+    padding-bottom: 100px;
+}
+
+.feedback-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #f3f4f6;
+    padding: 40px;
+    border-radius: 28px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+}
+
+/* Row for Name/Email on Desktop */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .input-group {
+    flex: 1;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: #374151;
+}
+
+.input-group input, 
+.input-group select, 
+.input-group textarea {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    font-family: 'Poppins', sans-serif;
+    background: #f9fafb;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+    outline: none;
+    border-color: #2563EB;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* --- GRADIENT BUTTON --- */
+.gradient-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(90deg, #2563EB, #06b6d4);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.gradient-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+}
+
+/* --- TRANSITION EFFECT --- */
+.fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- MOBILE RESPONSIVENESS (The "Fix") --- */
+@media (max-width: 768px) {
+    .feedback-hero { padding: 60px 0 30px; }
+    
+    .form-row {
+        flex-direction: column; /* Stack Name and Email on Mobile */
+        gap: 0;
+    }
+
+    .feedback-card {
+        padding: 25px 20px;
+        margin: 0 10px; /* Leave small space on edges */
+        border-radius: 20px;
+    }
+
+    .hero-title { font-size: 2.5rem; }
+}
+
+
+/* Toast Notification Style */
+.toast-popup {
+    position: fixed;
+    top: -100px; /* Start hidden above the screen */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border-left: 5px solid #2563EB;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    z-index: 2000;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.toast-popup.show {
+    top: 30px; /* Slide down into view */
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.toast-content i {
+    font-size: 2rem;
+    background: linear-gradient(90deg, #2563EB, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.toast-text h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #111827;
+}
+
+.toast-text p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #6B7280;
+}
+
+
+@media (max-width: 768px) {
+    .feedback-hero {
+        padding: 40px 0 20px;
+    }
+    
+    .feedback-card {
+        padding: 25px 15px;
+        border-radius: 15px;
+    }
+
+    .form-row {
+        flex-direction: column; /* Stack Name and Email */
+        gap: 0;
+    }
+
+    .input-group input, 
+    .input-group select, 
+    .input-group textarea {
+        font-size: 16px; /* Prevents iPhone from zooming in when typing */
+    }
+}

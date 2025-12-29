@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | QASWA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="feedback.css">
+    <script src="feedback.js" defer></script>
+     <script src="index.js" defer></script>
+</head>
+<body class="pro-grid-bg">
+
+    <nav class="navbar">
+    <div class="container nav-flex">
+        <div class="logo">
+    <a href="index.html" class="logo-link">
+        <img src="qaswa.jpg" alt="QASWA Logo" class="union-logo">
+        <span class="logo-text">QASWA</span>
+    </a>
+</div>
+
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="members.html">Members</a></li>
+            <li><a href="committee.html">Committee</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+             <li><a href="feedback.html">Feedback</a></li>
+            <li class="mobile-only"><a href="#" class="btn-signup">Join Union</a></li>
+        </ul>
+
+        <div class="nav-buttons desktop-only">
+        </div>
+    </div>
+</nav>
+    
+    <header class="feedback-hero">
+        <div class="container fade-in">
+            <h1 class="hero-title">What's your <br><span class="gradient-text">feedback about us?</span></h1>
+            <p class="hero-desc">Your thoughts help us grow and lead the union better.</p>
+        </div>
+    </header>
+
+    <section class="form-wrapper">
+        <div class="container">
+            <div class="feedback-card fade-in">
+               <form action="https://formspree.io/f/maqynjqe" method="POST" id="qaswaFeedback" >
+    
+    <div class="form-row">
+        <div class="input-group">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="e.g. Adhil" required>
+        </div>
+        <div class="input-group">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="name@example.com" required>
+        </div>
+    </div>
+    
+    <div class="input-group">
+        <label>Category</label>
+        <select name="category">
+            <option value="General">General Feedback</option>
+            <option value="Suggestion">Suggestion</option>
+            <option value="Issue">Report an Issue</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label>Message</label>
+        <textarea name="message" rows="5" placeholder="Write your thoughts here..." required></textarea>
+    </div>
+
+    <button type="submit" class="gradient-btn">
+        Submit Feedback <i class="fas fa-paper-plane"></i>
+    </button>
+</form>
+            </div>
+        </div>
+    </section>
+
+           <footer class="main-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col brand-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon"><i class="fas fa-users"></i></span>
+                        <span class="logo-text">QASWA</span>
+                    </div>
+                    <p>The modern platform for class unions who demand excellence in organization.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#committee">Committee</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 QASWA. All rights reserved.</p>
+                <div class="footer-help">
+                    <span>Need help?</span>
+                    <a href="#"><i class="far fa-envelope"></i> Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <div id="successToast" class="toast-popup">
+    <div class="toast-content">
+        <i class="fas fa-check-circle"></i>
+        <div class="toast-text">
+            <h4>Sent Successfully!</h4>
+            <p>Thank you for your feedback, Bro.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

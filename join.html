@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join QASWA | Excellence in Unity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="join-style.css">
+    <script src="join-script.js" defer></script>
+     <script src="index.js" defer></script>
+</head>
+<body class="join-body">
+
+    <div class="join-wrapper">
+        <div class="join-card shadow-lg">
+            <div class="brand-panel">
+                <div class="brand-content">
+                    <div class="mini-logo"><i class="fas fa-users"></i> QASWA</div>
+                    <h1 class="panel-title">Become a part of <br><span>QASWA</span></h1>
+                    <p class="panel-desc">Join over 50+ students in our mission to create a stronger, more united class community.</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Access to exclusive study materials</li>
+                        <li><i class="fas fa-check-circle"></i> Priority updates on class events</li>
+                        <li><i class="fas fa-check-circle"></i> Voting rights in union decisions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="form-panel">
+                <div class="form-header">
+                    <h2>Create your account</h2>
+                    <p>Enter your details to register as a member.</p>
+                </div>
+
+                <form class="qaswa-form" id="joinForm">
+                    <div class="input-field">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="e.g. John Doe" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="john@example.com" required>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-field">
+                            <label>Roll Number</label>
+                            <input type="text" placeholder="e.g. 21CS04" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Department</label>
+                            <select required>
+                                <option value="">Select Department</option>
+                                <option>Computer Science</option>
+                                <option>Engineering</option>
+                                <option>Business</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" placeholder="••••••••" required>
+                            <i class="fas fa-eye" id="togglePassword" style="cursor: pointer;"></i>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Join the Union</button>
+                    <p class="footer-text">By joining, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

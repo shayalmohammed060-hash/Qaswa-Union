@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QASWA Admin Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css"> <style>
+        .admin-container { padding: 100px 20px; max-width: 900px; margin: 0 auto; }
+        .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .admin-card { background: white; padding: 30px; border-radius: 24px; border: 1px solid #f3f4f6; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .admin-card h3 { margin-bottom: 20px; font-weight: 700; color: #111827; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; color: #6B7280; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #e5e7eb; border-radius: 10px; font-family: 'Poppins'; }
+        .upload-btn { width: 100%; margin-top: 15px; background: linear-gradient(90deg, #2563EB, #06b6d4); color: white; border: none; padding: 14px; border-radius: 10px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .upload-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); }
+        .status-msg { margin-top: 10px; font-size: 0.85rem; text-align: center; display: none; }
+        /* SECURITY LOCK SCREEN */
+#login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #111827; /* Dark background */
+    z-index: 9999; /* Sits on top of EVERYTHING */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    width: 90%;
+    max-width: 400px;
+}
+
+.login-box h2 { margin-bottom: 20px; color: #333; }
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+.login-box button {
+    background: #2563EB;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body class="pro-grid-bg">
+
+    <body>
+
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2>🔒 Admin Access</h2>
+            <p style="margin-bottom:15px; color:#666;">Enter the secret code to continue.</p>
+            <input type="password" id="adminPass" placeholder="Enter Password">
+            <button onclick="checkPassword()">Unlock</button>
+            <p id="errorMsg" style="color:red; display:none; margin-top:10px;">❌ Wrong Password!</p>
+        </div>
+    </div>
+
+<script>
+    function checkPassword() {
+        const password = document.getElementById('adminPass').value;
+        const overlay = document.getElementById('login-overlay');
+        const error = document.getElementById('errorMsg');
+
+        // SET YOUR PASSWORD HERE
+        // Example: "qaswa2025"
+        const secretCode = "Quickactivestudentsworthyassociation123456789"; 
+
+        if (password === secretCode) {
+            // Password is correct: Hide the overlay
+            overlay.style.display = "none";
+            // Save login status so it doesn't ask again this session
+            sessionStorage.setItem("adminLoggedIn", "true");
+        } else {
+            // Wrong password
+            error.style.display = "block";
+        }
+    }
+
+    // Check if already logged in (so you don't have to type it every refresh)
+    if (sessionStorage.getItem("adminLoggedIn") === "true") {
+        document.getElementById('login-overlay').style.display = "none";
+    }
+</script>
+
+    <div class="admin-container">
+        <h1 class="hero-title">QASWA <span class="gradient-text">Admin Portal</span></h1>
+        <p class="hero-desc">Manage your Committee and Gallery content live.</p>
+
+        <div class="admin-grid">
+            <div class="admin-card">
+                <h3><i class="fas fa-user-shield"></i> New Committee Member</h3>
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="commName" placeholder="Name">
+                </div>
+                <div class="input-group">
+                    <label>Role</label>
+                    <input type="text" id="commRole" placeholder="e.g. President">
+                </div>
+                <div class="input-group">
+                    <label>Profile Image</label>
+                    <input type="file" id="commImage" accept="image/*">
+                </div>
+                <button class="upload-btn" onclick="uploadCommittee()">Add to Website</button>
+                <div id="commStatus" class="status-msg">Processing...</div>
+            </div>
+
+            <div class="admin-card">
+                <h3><i class="fas fa-images"></i> New Gallery Photo</h3>
+                <div class="input-group">
+                    <label>Category</label>
+                    <select id="galCategory">
+                        <option value="events">Events</option>
+                        <option value="picnic">Picnic</option>
+                        <option value="meetings">Meetings</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Image File</label>
+                    <input type="file" id="galImage" accept="image/*">
+                </div>
+                <button class="upload-btn" onclick="uploadGallery()">Add to Gallery</button>
+                <div id="galStatus" class="status-msg">Processing...</div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore-compat.js"></script>
+
+<script>
+  // ==========================================
+  // CONFIGURATION SECTION (PASTE KEYS HERE)
+  // ==========================================
+
+  // 1. Paste your ImgBB Key inside the quotes below:
+  const imgbbAPIKey = "42826054205509ec256ecd28a83836f1"; 
+
+ // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCfrBS9gmLIthFTxa88i2S6Q1dqcZwxbYA",
+  authDomain: "qaswa-union-91a81.firebaseapp.com",
+  projectId: "qaswa-union-91a81",
+  storageBucket: "qaswa-union-91a81.firebasestorage.app",
+  messagingSenderId: "480598291198",
+  appId: "1:480598291198:web:d46e5cf2ac765b5df9abaf",
+  measurementId: "G-BCLKHWQZV8"
+};
+
+  // ==========================================
+  // NO NEED TO TOUCH CODE BELOW THIS LINE
+  // ==========================================
+
+  // Initialize Firebase (Database Only)
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  // Function: Upload Committee Member
+  async function uploadCommittee() {
+    const name = document.getElementById('commName').value;
+    const role = document.getElementById('commRole').value;
+    const file = document.getElementById('commImage').files[0];
+    const status = document.getElementById('commStatus');
+
+    if(!name || !file) {
+        alert("Please enter a name and select a photo!");
+        return;
+    }
+
+    status.style.display = "block";
+    status.innerText = "⏳ Uploading photo...";
+
+    try {
+        // Step A: Send Image to ImgBB
+        let formData = new FormData();
+        formData.append("image", file);
+        
+        let response = await fetch(`https://api.imgbb.com/1/upload?key=${imgbbAPIKey}`, {
+            method: "POST",
+            body: formData
+        });
+        
+        let data = await response.json();
+        if(!data.success) throw new Error("Image Upload Failed");
+        
+        let imageUrl = data.data.url; // We got the link!
+
+        // Step B: Save Name & Link to Firebase
+        status.innerText = "⏳ Saving to Database...";
+        
+        await db.collection("committee").add({
+            name: name,
+            role: role,
+            image: imageUrl,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+
+        status.innerHTML = "✅ Success! Member Added.";
+        status.style.color = "green";
+        
+        // Clear the form
+        document.getElementById('commName').value = "";
+        document.getElementById('commRole').value = "";
+        document.getElementById('commImage').value = "";
+
+    } catch (error) {
+        console.error(error);
+        status.innerText = "❌ Error: " + error.message;
+        status.style.color = "red";
+    }
+  }
+
+  // Function: Upload Gallery Photo
+  async function uploadGallery() {
+    const category = document.getElementById('galCategory').value;
+    const file = document.getElementById('galImage').files[0];
+    const status = document.getElementById('galStatus');
+
+    if(!file) {
+        alert("Please select a photo!");
+        return;
+    }
+
+    status.style.display = "block";
+    status.innerText = "⏳ Uploading photo...";
+
+    try {
+        let formData = new FormData();
+        formData.append("image", file);
+        
+        let response = await fetch(`https://api.imgbb.com/1/upload?key=${imgbbAPIKey}`, {
+            method: "POST",
+            body: formData
+        });
+        
+        let data = await response.json();
+        if(!data.success) throw new Error("Image Upload Failed");
+
+        let imageUrl = data.data.url;
+
+        status.innerText = "⏳ Saving to Gallery...";
+
+        await db.collection("gallery").add({
+            category: category,
+            image: imageUrl,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+
+        status.innerHTML = "✅ Photo added to Gallery!";
+        status.style.color = "green";
+        document.getElementById('galImage').value = "";
+
+    } catch (error) {
+        console.error(error);
+        status.innerText = "❌ Error: " + error.message;
+        status.style.color = "red";
+    }
+  }
+</script>
+</body>
+</html>
