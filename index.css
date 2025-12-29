@@ -365,40 +365,41 @@ body {
 .scroll-top:hover { transform: translateY(-5px); }
 
 
-/* --- MOBILE FIXES FOR HOME PAGE --- */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 15px; /* Add side padding so text doesn't touch edges */
-    }
-
-    .hero-title {
-        font-size: 2.8rem; /* Make big text smaller for phone screens */
-        line-height: 1.2;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-        padding: 0 10px;
-    }
-
-    .hero-buttons {
-        flex-direction: column; /* Stack buttons vertically */
-        gap: 15px;
-        padding: 0 20px;
-    }
-
-    .btn-primary, .btn-secondary {
-        width: 100%; /* Make buttons full width */
-        text-align: center;
-    }
-
-    .grid-3 {
-        grid-template-columns: 1fr; /* Force 1 column for feature cards */
-        gap: 20px;
-    }
+/* --- ULTIMATE RESPONSIVE NAV & FOOTER --- */
+@media (max-width: 950px) {
+    .checkbtn { display: block; margin-right: 20px; }
     
-    .hero-tags {
+    .nav-links {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: white;
+        top: 70px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
         flex-direction: column;
-        gap: 10px;
+        z-index: 1000;
     }
+
+    #check:checked ~ .nav-links { left: 0; }
+
+    .nav-links li {
+        display: block;
+        margin: 30px 0;
+        line-height: 30px;
+    }
+
+    /* Hero section fixes */
+    .hero-title { font-size: 2.8rem !important; }
+    .grid-3 { grid-template-columns: 1fr; gap: 20px; }
+    
+    /* Footer Fix */
+    .footer-top {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+    .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
 }
+
